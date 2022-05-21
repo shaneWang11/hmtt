@@ -53,7 +53,7 @@ export default {
     this.userInfo = res.data.data
   }
 
-};
+}
 </script>
 
 <style lang="less">
