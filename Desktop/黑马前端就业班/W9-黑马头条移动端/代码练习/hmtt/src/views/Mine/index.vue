@@ -3,10 +3,10 @@
   <!-- 头像资料区域 -->
   <div class="profile-box">
     <!-- vant提供的组件，一定有一个类，跟组件名一样 -->
-    <van-image fit="cover" round src="https://img01.yzcdn.cn/vant/cat.jpeg" />
+    <van-image fit="cover" round :src="userInfo.photo" />
     <div class="info">
-      <h4>用户名字</h4>
-      <span>2022-05-21</span>
+      <h4>{{ userInfo.name }}</h4>
+      <span>{{ userInfo.birthday }}</span>
     </div>
   </div>
 
@@ -38,14 +38,28 @@
 </template>
 
 <script>
-export default {};
+//导入接口
+import { userInfoAPI } from '@/api'
+
+export default {
+  data(){
+    return {
+      userInfo:{}
+    }
+  },
+
+  async created(){
+    let res = await userInfoAPI()
+    this.userInfo = res.data.data
+  }
+
+};
 </script>
 
 <style lang="less">
 .profile-box {
   /* 声明背景颜色变量 */
   @color: #3296fa;
-
   height: 140px;
   background-color: @color;
   display: flex;
