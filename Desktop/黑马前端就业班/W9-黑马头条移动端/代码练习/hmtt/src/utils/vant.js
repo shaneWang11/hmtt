@@ -14,3 +14,7 @@ Vue.use(Button);
 
 import { Toast } from 'vant';
 Vue.use(Toast);
+
+import { Tabbar, TabbarItem } from 'vant';
+Vue.use(Tabbar);
+Vue.use(TabbarItem);
