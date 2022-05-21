@@ -73,6 +73,10 @@ export default {
         //    alert('登录成功')
             this.$toast.success('登录成功')
 
+            //登录成功后跳转到layout页面
+            this.$router.replace('/layout/home')
+
+
            }catch{
             //    alert('验证码错误')
             this.$toast.fail('验证码错误')
