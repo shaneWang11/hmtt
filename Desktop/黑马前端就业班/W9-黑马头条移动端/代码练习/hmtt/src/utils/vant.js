@@ -18,3 +18,16 @@ Vue.use(Toast);
 import { Tabbar, TabbarItem } from 'vant';
 Vue.use(Tabbar);
 Vue.use(TabbarItem);
+
+import { Image as VanImage } from 'vant';
+Vue.use(VanImage);
+
+import { Col, Row } from 'vant';
+import { Icon } from 'vant';
+Vue.use(Icon);
+Vue.use(Col);
+Vue.use(Row);
+
+import { Cell, CellGroup } from 'vant';
+Vue.use(Cell);
+Vue.use(CellGroup);
