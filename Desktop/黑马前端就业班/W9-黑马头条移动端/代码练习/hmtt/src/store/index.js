@@ -1,7 +1,9 @@
-import { getToken,setToken } from '@/utils/token'
+import { getToken,removeToken,setToken } from '@/utils/token'
 import Vue from 'vue'
 import Vuex from 'vuex'
 import { userInfoAPI } from '@/api'
+import router from '@/router'
+import { Toast } from 'vant'
 
 Vue.use(Vuex)
 
@@ -28,7 +30,18 @@ export default new Vuex.Store({
     changeUserInfo(state,obj){
       state.userInfo = obj
     },
-    
+
+    //退出登录功能
+    removeToken(state){
+      // 删除vuex里面的token
+      state.tokenObj = {}
+      // 删除本地存储里面的token
+      removeToken()
+      // 删除用户信息
+      state.userInfo = {}
+      Toast('退出成功！')
+      router.push('/login')
+    }
 
   },
   actions:{

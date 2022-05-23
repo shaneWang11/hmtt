@@ -79,6 +79,11 @@ export default {
         //    alert('登录成功')
         this.$toast.success("登录成功");
 
+        //细节：退出时一定要清空用户信息，不然换个账号原本的用户信息还在
+        //登录成功，也得清除用户信息(login页)
+        // 把userInfo清空
+        this.$store.commit("changeUserInfo", {});
+        
         // 判断有没有参数
         if (this.$route.query.back) {
           // 跳转到这个参数对应的值的路径上
