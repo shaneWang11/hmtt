@@ -12,12 +12,13 @@ import home from '@/views/Home'
 import ask from "@/views/Ask"
 import mine from "@/views/Mine"
 import video from "@/views/Video"
+import edit from "@/views/Mine/edit"
 
 
 
 //路由规则
 const routes = [
-  { path: '/', redirect: '/login' },
+  { path: '/', redirect: '/layout/home' },
   { name: 'login', path: '/login', component: login },
   {
     name: 'layout', path: '/layout', component: layout,
@@ -34,7 +35,9 @@ const routes = [
         }
       }
     ]
-  }
+  },
+  {name:'edit',path:'/mine/edit',component:edit}
+
 ]
 
 const router = new VueRouter({

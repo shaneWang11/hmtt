@@ -28,7 +28,7 @@
 
     <!-- 底部cell区域 -->
     <van-cell-group>
-      <van-cell icon="edit" title="编辑资料" is-link />
+      <van-cell to="/mine/edit" icon="edit" title="编辑资料" is-link />
       <van-cell icon="chat-o" title="小智同学" is-link />
       <van-cell icon="setting-o" title="系统设置" is-link />
       <van-cell icon="info-o" title="退出登录" is-link />
@@ -42,17 +42,25 @@
 import { userInfoAPI } from '@/api'
 
 export default {
-  data(){
-    return {
-      userInfo:{}
+  computed:{
+    userInfo(){
+      return this.$store.state.userInfo
     }
   },
+  // data(){
+  //   return {
+  //      userInfo:{}
+  //   }
+  // },
 
-  async created(){
-    let res = await userInfoAPI()
-    this.userInfo = res.data.data
-  }
-
+  async created() {
+      //判断vuex里面没有数据才发请求
+    if (!this.userInfo.name) {
+      let res = await userInfoAPI();
+      // 把请求到的数据保存到vuex里
+      this.$store.commit('changeUserInfo',res.data.data)
+    }
+  },
 }
 </script>
 
