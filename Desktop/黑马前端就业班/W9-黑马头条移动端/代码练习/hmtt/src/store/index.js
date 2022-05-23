@@ -1,6 +1,7 @@
 import { getToken,setToken } from '@/utils/token'
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { userInfoAPI } from '@/api'
 
 Vue.use(Vuex)
 
@@ -26,7 +27,18 @@ export default new Vuex.Store({
     //提供修改用户信息的方法
     changeUserInfo(state,obj){
       state.userInfo = obj
-    }
+    },
+    
+
   },
+  actions:{
+    async reqUserInfo(context){
+      if (!context.state.userInfo.name) {
+        let res = await userInfoAPI();
+        // 把请求到的数据保存到vuex里
+        context.commit('changeUserInfo',res.data.data)
+      }
+    }
+  }
 
 })

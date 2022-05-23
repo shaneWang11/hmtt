@@ -39,7 +39,7 @@
 
 <script>
 //导入接口
-import { userInfoAPI } from '@/api'
+// import { userInfoAPI } from '@/api'
 
 export default {
   computed:{
@@ -53,13 +53,16 @@ export default {
   //   }
   // },
 
-  async created() {
-      //判断vuex里面没有数据才发请求
-    if (!this.userInfo.name) {
-      let res = await userInfoAPI();
-      // 把请求到的数据保存到vuex里
-      this.$store.commit('changeUserInfo',res.data.data)
-    }
+  created() {
+    //   //判断vuex里面没有数据才发请求
+    // if (!this.userInfo.name) {
+    //   let res = await userInfoAPI();
+    //   // 把请求到的数据保存到vuex里
+    //   this.$store.commit('changeUserInfo',res.data.data)
+    // }
+
+    // 优化：
+    this.$store.dispatch('reqUserInfo')
   },
 }
 </script>
